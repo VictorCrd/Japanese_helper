@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Import 
-
-# In[23]:
+# # Import
 
 
 import pandas as pd
@@ -11,15 +9,7 @@ import numpy as np
 import MeCab
 from jisho import Client
 
-
-# In[ ]:
-
-
 wakati = MeCab.Tagger("-Owakati")
-
-
-# In[58]:
-
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た', 'ん']
 known_vocab_drop = ['私', 'さん']

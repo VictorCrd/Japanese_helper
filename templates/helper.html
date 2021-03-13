@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Helper</title>
-    <p>{{ text }}</p>
-    result
-</head>
-<body>
 
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Helper</title>
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../static/materialize.css" media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <p>{{text}}</p>
+        <p>{{result|safe}}</p>
+        <p>JLPT N5 : {{CORE_N5}}</p>
+        <p>JLPT N4 : {{CORE_N4}}</p>
+        <p>JLPT N3 : {{CORE_N3}}</p>
+        <p>JLPT N2 : {{CORE_N2}}</p>
+        <p>JLPT N1 : {{CORE_N1}}</p>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../static/materialize.js"></script>
+    </body>
+
 </html>
