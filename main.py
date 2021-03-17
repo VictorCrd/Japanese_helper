@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from dev_tests.JLPT_LVL_script import split_japanese
 from dev_tests.JLPT_LVL_youtube import JLPT_lvl_core
 
@@ -17,6 +17,13 @@ def home():
 
     else:
         return render_template("index.html")
+
+
+@app.route('/return', methods = ['POST', 'GET'])
+def verify():
+    if request.method == 'POST':
+
+        return redirect("/")
 
 
 if __name__ == '__main__':
