@@ -13,25 +13,60 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <meta charset="utf-8">
+        <link rel="icon" href="images\spring_festival_2020.jpg">
+        <title>Spring Festival</title>
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/3ad9c81434.js"></script>
+
+        <link href="../static/navbar.css" rel="stylesheet">
+        <link href="../static/footer.css" rel="stylesheet">
+        <link href="../static/main.css" rel="stylesheet">
+
     </head>
 
+
     <body>
+        <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a href="https://www.linkedin.com/in/victor-cardon/" class="white-text valign-wrapper">
+                <i class="fab fa-linkedin fa-3x"></i>
+                </a>
+                <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
+                <a class="py-2 d-none d-md-inline-block" href="#">Youtube Helper</a>
+                <a class="py-2 d-none d-md-inline-block" href="#">Text Helper</a>
+                <a class="py-2 d-none d-md-inline-block" href="#">Podcast Helper</a>
+            </div>
+        </nav>
+
         <div id="index-banner" class="Learning Helper">
             <div class="section no-pad-bot">
                 <div class="container">
                 <br><br>
-                <h1 class="header center teal-text text-lighten-2">Learning Helper</h1>
+                <h1 class="header center blue-text text-darken-1">Learning Helper</h1>
                 <div class="row center">
                     <h5 class="header col s12 light">An application in development with the goal to help you learning a language</h5>
                 </div>
                 <div class="row center">
-                    <a href="" id="" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+                    <a href="" id="" class="btn-large waves-effect waves-light blue darken-1">Get Started</a>
                 </div>
                 <br><br>
 
             </div>
         </div>
-        <div class="parallax"><img src="../static/NOCOPYRIGHT_fuji-jp.jpg" alt="fuji-jp"></div>
+        <!-- Parallax -->
+        <div class="parallax-container">
+            <div class="parallax"><img src="../static/NOCOPYRIGHT_fuji-jp.jpg" alt="fuji-jp"></div>
         </div>
 
         <form action="#" method="post">
@@ -40,22 +75,27 @@
             <p><input type="submit" value="submit" class="btn-large waves-effect waves-light orange"/></p>
         </form>
 
+        <form action="#" method="post">
+            <h2 class="header center orange-text">Youtube video link:</h2>
+            <p><input type="text" name="youtube" /></p>
+            <p><input type="submit" value="submit" class="btn-large waves-effect waves-light orange"/></p>
+        </form>
+
         <h1>To do list</h1>
-            <table>
-                Niveau difficulté vitesse parlé
-                Niveau difficulté N5-N1
-                ML thème script
-                ML pour les podcasts sans st
-                Mise en page
-            </table>
-
-
-    <!--JavaScript at end of body for optimized loading-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../static/materialize.js"></script>
-    <script src="../static/init.js"></script>
+        <table>
+            Niveau difficulté vitesse parlé
+            Niveau difficulté N5-N1
+            ML thème script
+            ML pour les podcasts sans st
+            Mise en page
+        </table>
 
     </body>
 
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/materialize.js"></script>
+    <script src="../static/init.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
 </html>
