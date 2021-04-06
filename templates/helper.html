@@ -22,56 +22,92 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <script src="https://kit.fontawesome.com/3ad9c81434.js"></script>
+
+        <link href="../static/navbar.css" rel="stylesheet">
+        <link href="../static/footer.css" rel="stylesheet">
+        <link href="../static/main.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <body>
-    <h1 class="header">Text :</h1>
-    <p>{{text}}</p>
+    <div class="container">
+        <h1 class="header blue-text text-darken-1">Text :</h1>
+            <p>{{text}}</p>
+    </div>
 
-    <h1 class="header">10 most frequent words :</h1>
-    <p>{{result|safe}}</p>
+    <div class="container">
+        <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
+            <p>{{result|safe}}</p>
+    </div>
 
-    <h1 class="header">Difficulty :</h1>
-    <ul class="collection">
-        <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
-        <li class="collection-item">JLPT N4 : {{CORE_N4}}</li>
-        <li class="collection-item">JLPT N3 : {{CORE_N3}}</li>
-        <li class="collection-item">JLPT N2 : {{CORE_N2}}</li>
-        <li class="collection-item">JLPT N1 : {{CORE_N1}}</li>
-    </ul>
+    <div class="container">
+        <h1 class="header blue-text text-darken-1">Difficulty :</h1>
+            <ul class="collection">
+                <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
+                <li class="collection-item">JLPT N4 : {{CORE_N4}}</li>
+                <li class="collection-item">JLPT N3 : {{CORE_N3}}</li>
+                <li class="collection-item">JLPT N2 : {{CORE_N2}}</li>
+                <li class="collection-item">JLPT N1 : {{CORE_N1}}</li>
+            </ul>
+    </div>
 
-    <ul class="collapsible">
-        <li class="active">
-            <div class="collapsible-header"><i class="material-icons">looks_5</i>JLPT N5</div>
-            <div class="collapsible-body"><span>{{df_5|safe}}</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">looks_4</i>JLPT N4</div>
-            <div class="collapsible-body"><span>{{df_4|safe}}</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">looks_3</i>JLPT N3</div>
-            <div class="collapsible-body"><span>{{df_3|safe}}</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">looks_two</i>JLPT N2</div>
-            <div class="collapsible-body"><span>{{df_2|safe}}</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">looks_one</i>JLPT N1</div>
-            <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
-        </li>
-    </ul>
+    <div class="container">
 
+         <script type="text/javascript">
+            var CORE_N5 = {{CORE_N5}}
+            var CORE_N4 = {{CORE_N4}}
+            var CORE_N3 = {{CORE_N3}}
+            var CORE_N2 = {{CORE_N2}}
+            var CORE_N1 = {{CORE_N1}}
+        </script>
+        <script type="text/javascript" src="pie.js"></script>
+
+        <canvas id="myChart" width="400" height="200">
+        </canvas>
+    </div>
+
+    <div class="container">
+        <h1 class="header blue-text text-darken-1">Vocabulary by NLPT levels:</h1>
+            <ul class="collapsible">
+                <li class="active">
+                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_5</i>JLPT N5</div>
+                    <div class="collapsible-body"><span>{{df_5|safe}}</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_4</i>JLPT N4</div>
+                    <div class="collapsible-body"><span>{{df_4|safe}}</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_3</i>JLPT N3</div>
+                    <div class="collapsible-body"><span>{{df_3|safe}}</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_two</i>JLPT N2</div>
+                    <div class="collapsible-body"><span>{{df_2|safe}}</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_one</i>JLPT N1</div>
+                    <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
+                </li>
+            </ul>
+    </div>
+
+    <div class="container">
     <form action="/return" method = "POST">
-        <input type="submit" name="return" value="return"/>
+    <button class="btn-large right waves-effect waves-light blue darken-1" type="submit" name="return">
+        <i class="material-icons right">home</i>
+        Home
+    </button>
     </form>
+    </div>
 
     </body>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../static/materialize.js"></script>
     <script type="text/javascript" src="../static/init.js"></script>
+    <script type="text/javascript" src="../static/pie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 
 </html>
