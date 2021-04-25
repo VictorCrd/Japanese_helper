@@ -30,7 +30,9 @@ def split_japanese(sentence):
 
     return df_script
 
-
+"""
+This function alow to request Jisho to get a traduction
+"""
 def get_traduction_10_jp_words(sentence):
     script = wakati.parse(sentence).split()
     df_script = pd.DataFrame({'vocab':script})
@@ -42,7 +44,7 @@ def get_traduction_10_jp_words(sentence):
         
     #df_script = df_script.groupby('vocab').sum().sort_values('count', ascending = False).drop(index = list_drop)[0:10]
     df_script = df_script.reset_index()[0:10]
-    print(df_script)
+
     df_script['trad'] = np.NaN
     df_script['reading'] = np.NaN
     client = Client()

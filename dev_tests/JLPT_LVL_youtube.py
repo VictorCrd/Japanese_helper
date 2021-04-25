@@ -39,12 +39,6 @@ Core_Japanese_Vocabulary_N2 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabular
 Core_Japanese_Vocabulary_N1 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N1.csv",
                                           usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
 
-Core_Japanese_Vocabulary_N5["count"] = 0
-Core_Japanese_Vocabulary_N4["count"] = 0
-Core_Japanese_Vocabulary_N3["count"] = 0
-Core_Japanese_Vocabulary_N2["count"] = 0
-Core_Japanese_Vocabulary_N1["count"] = 0
-
 
 # Find nbr of NLPT word by level
 
@@ -61,9 +55,14 @@ def count_words_in_text(df_words, df_subtitles, column_words):
 
 
 def get_JLPT_words(df_sentence, JLPT_LVL):
+    Core_Japanese_Vocabulary_N5["count"], Core_Japanese_Vocabulary_N4["count"], Core_Japanese_Vocabulary_N3["count"], \
+    Core_Japanese_Vocabulary_N2["count"], Core_Japanese_Vocabulary_N1["count"] = 0, 0, 0, 0, 0
+
     df_list = [Core_Japanese_Vocabulary_N1, Core_Japanese_Vocabulary_N2, Core_Japanese_Vocabulary_N3,
                Core_Japanese_Vocabulary_N4, Core_Japanese_Vocabulary_N5]
     df = df_sentence.merge(df_list[JLPT_LVL - 1], how='inner', left_on='vocab', right_on='Expression')
+
+    df.rename(columns={'vocab': 'Vocab', 'count_x': 'Count'}, inplace=True)
 
     return df
 
@@ -88,19 +87,25 @@ def JLPT_lvl_core(text, cnt_sum=0):
     df_words = split_japanese(text)
 
     if cnt_sum == 0:
-        CORE_N5 = get_JLPT_words(df_words, 5)['count_x'].sum()
-        CORE_N4 = get_JLPT_words(df_words, 4)['count_x'].sum()
-        CORE_N3 = get_JLPT_words(df_words, 3)['count_x'].sum()
-        CORE_N2 = get_JLPT_words(df_words, 2)['count_x'].sum()
-        CORE_N1 = get_JLPT_words(df_words, 1)['count_x'].sum()
+        CORE_N5 = get_JLPT_words(df_words, 5)['Count'].sum()
+        CORE_N4 = get_JLPT_words(df_words, 4)['Count'].sum()
+        CORE_N3 = get_JLPT_words(df_words, 3)['Count'].sum()
+        CORE_N2 = get_JLPT_words(df_words, 2)['Count'].sum()
+        CORE_N1 = get_JLPT_words(df_words, 1)['Count'].sum()
 
     if cnt_sum == 1:
-        CORE_N5 = get_JLPT_words(df_words, 5)['count_x'].count()
-        CORE_N4 = get_JLPT_words(df_words, 4)['count_x'].count()
-        CORE_N3 = get_JLPT_words(df_words, 3)['count_x'].count()
-        CORE_N2 = get_JLPT_words(df_words, 2)['count_x'].count()
-        CORE_N1 = get_JLPT_words(df_words, 1)['count_x'].count()
+        CORE_N5 = get_JLPT_words(df_words, 5)['Count'].count()
+        CORE_N4 = get_JLPT_words(df_words, 4)['Count'].count()
+        CORE_N3 = get_JLPT_words(df_words, 3)['Count'].count()
+        CORE_N2 = get_JLPT_words(df_words, 2)['Count'].count()
+        CORE_N1 = get_JLPT_words(df_words, 1)['Count'].count()
 
     CORE = CORE_N5 + CORE_N4 + CORE_N3 + CORE_N2 + CORE_N1
 
     return CORE_N5 / CORE, CORE_N4 / CORE, CORE_N3 / CORE, CORE_N2 / CORE, CORE_N1 / CORE
+
+
+def clean_subtitles(text):
+    text = text.replace('[音楽]', '')
+
+    return text

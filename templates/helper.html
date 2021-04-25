@@ -32,12 +32,20 @@
     <body>
     <div class="container">
         <h1 class="header blue-text text-darken-1">Text :</h1>
-            <p>{{text}}</p>
+        <div class="row">
+            <div class="col s12 m5">
+                <div class="card-panel white scroll-box">
+                    <span class="text-darken-1">
+                        {{text}}
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container">
         <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
-            <p>{{result|safe}}</p>
+            <p>{{top_10_words|safe}}</p>
     </div>
 
     <div class="container">
@@ -109,5 +117,12 @@
     <script type="text/javascript" src="../static/pie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
+<style>
+        .scroll-box {
+            overflow-y: scroll;
+            height: 250px;
+            padding: 1rem
+        }
+</style>
 
 </html>
