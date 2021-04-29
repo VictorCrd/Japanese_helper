@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from dev_tests.JLPT_LVL_script import get_traduction_10_jp_words, split_japanese
-from dev_tests.JLPT_LVL_youtube import JLPT_lvl_core, get_yt_sub, get_JLPT_words, clean_subtitles
+from dev_tests.JLPT_LVL_youtube import JLPT_lvl_core, get_yt_sub, get_JLPT_words, get_speed_of_speach
 import pandas as pd
 
 app = Flask(__name__)
@@ -30,8 +30,9 @@ def home():
         if "youtube" in request.form:
             video_id = request.form["youtube"]
             video_id = video_id.split("https://www.youtube.com/watch?v=",1)[1]
-            text = get_yt_sub(video_id).to_string(header=False, index=False, index_names=False).replace('\n', '').replace(' ', '')
-            text = clean_subtitles(text)
+            youtube_subs = get_yt_sub(video_id)
+            speed_of_speach = get_speed_of_speach(youtube_subs)
+            text = youtube_subs['phrases'].to_string(header=False, index=False).replace('\n', '').replace(' ', '')
             CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = JLPT_lvl_core(text, 1)
 
             column_list = ['Vocab', 'Count', 'Meaning', 'Reading']
@@ -49,7 +50,8 @@ def home():
 
             return render_template("helper.html", top_10_words=top_10_words.to_html(), text=text, CORE_N5=CORE_N5, CORE_N4=CORE_N4,
                                    CORE_N3=CORE_N3, CORE_N2=CORE_N2, CORE_N1=CORE_N1, mimetype='text/html', df_5=df_5.to_html(),
-                                   df_4=df_4.to_html(), df_3=df_3.to_html(), df_2=df_2.to_html(), df_1=df_1.to_html())
+                                   df_4=df_4.to_html(), df_3=df_3.to_html(), df_2=df_2.to_html(), df_1=df_1.to_html(), speed_of_speach=speed_of_speach,
+                                   video_id = video_id)
 
     else:
         return render_template("index.html")

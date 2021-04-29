@@ -18,8 +18,11 @@ wakati = MeCab.Tagger("-Owakati")
 def get_yt_sub(youtube_id):
     st = YouTubeTranscriptApi.get_transcript(youtube_id, languages=['ja'])
     res = [sub['text'] for sub in st]
-    df = pd.DataFrame({'phrases': res})
+    start = [sub['start'] for sub in st]
+    duration = [sub['duration'] for sub in st]
+    df = pd.DataFrame({'phrases':res, 'duration':duration, 'start':start})
     df = df.replace('\n', ' ', regex=True)
+    df = df.loc[~df['phrases'].str.contains('[音楽]')]
 
     return df
 
@@ -104,8 +107,18 @@ def JLPT_lvl_core(text, cnt_sum=0):
 
     return CORE_N5 / CORE, CORE_N4 / CORE, CORE_N3 / CORE, CORE_N2 / CORE, CORE_N1 / CORE
 
+def get_speed_of_speach(df):
+    df['raw_real_duration'] = df['start'].shift(-1) - df['start']
+    df = df.apply(lambda df: find_duration(df, 'duration', 'raw_real_duration', 'real_duration'), axis=1)
+    df['nbr_characters'] = df.apply(lambda df: len(df['phrases']), axis=1)
+    df['ratio_duration_characters'] = df.apply(lambda df: df['real_duration'] / df['nbr_characters'], axis=1)
 
-def clean_subtitles(text):
-    text = text.replace('[音楽]', '')
+    return round(df['ratio_duration_characters'].mean(), 2)
 
-    return text
+
+def find_duration(df, var1, var2, var3):
+    if df[var1] > df[var2] :
+        df[var3]= df[var2]
+    else:
+        df[var3]=df[var1]
+    return df

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <title>Helper</title>
@@ -13,11 +12,6 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -27,95 +21,106 @@
         <link href="../static/footer.css" rel="stylesheet">
         <link href="../static/main.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
+         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-    <body>
-    <div class="container">
-        <h1 class="header blue-text text-darken-1">Text :</h1>
-        <div class="row">
-            <div class="col s12 m5">
-                <div class="card-panel white scroll-box">
-                    <span class="text-darken-1">
-                        {{text}}
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
-            <p>{{top_10_words|safe}}</p>
-    </div>
-
-    <div class="container">
-        <h1 class="header blue-text text-darken-1">Difficulty :</h1>
-            <ul class="collection">
-                <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
-                <li class="collection-item">JLPT N4 : {{CORE_N4}}</li>
-                <li class="collection-item">JLPT N3 : {{CORE_N3}}</li>
-                <li class="collection-item">JLPT N2 : {{CORE_N2}}</li>
-                <li class="collection-item">JLPT N1 : {{CORE_N1}}</li>
-            </ul>
-    </div>
-
-    <div class="container">
-
-         <script type="text/javascript">
+        <script type="text/javascript" src="/static/img_speed_speach.js"></script>
+        <script type="text/javascript">
             var CORE_N5 = {{CORE_N5}}
             var CORE_N4 = {{CORE_N4}}
             var CORE_N3 = {{CORE_N3}}
             var CORE_N2 = {{CORE_N2}}
             var CORE_N1 = {{CORE_N1}}
+            console.log("Hello world!");
         </script>
-        <script type="text/javascript" src="pie.js"></script>
+        <script type="text/javascript" src="/static/pie.js"></script>
 
-        <canvas id="myChart" width="400" height="200">
-        </canvas>
+
+    </head>
+
+<body>
+
+    <div class="row">
+        <div class="col s2">
+            <div class="container">
+
+            </div>
+        </div>
+        <div class="col s8">
+            <div class="container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                <h1 class="header blue-text text-darken-1">Text :</h1>
+                    <div class="card-panel white scroll-box">
+                        <span class="text-darken-1">
+                            {{text}}
+                        </span>
+                    </div>
+
+                <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
+                <p>{{top_10_words|safe}}</p>
+
+                <h1 class="header blue-text text-darken-1">Difficulty :</h1>
+                <ul class="collection">
+                    <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
+                    <li class="collection-item">JLPT N4 : {{CORE_N4}}</li>
+                    <li class="collection-item">JLPT N3 : {{CORE_N3}}</li>
+                    <li class="collection-item">JLPT N2 : {{CORE_N2}}</li>
+                    <li class="collection-item">JLPT N1 : {{CORE_N1}}</li>
+                </ul>
+
+                <canvas id="myChart" width="400" height="200">
+                </canvas>
+
+                <h1 class="header blue-text text-darken-1">Vocabulary by NLPT levels:</h1>
+                <ul class="collapsible">
+                    <li class="active">
+                        <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_5</i>JLPT N5</div>
+                        <div class="collapsible-body"><span>{{df_5|safe}}</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_4</i>JLPT N4</div>
+                        <div class="collapsible-body"><span>{{df_4|safe}}</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_3</i>JLPT N3</div>
+                        <div class="collapsible-body"><span>{{df_3|safe}}</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_two</i>JLPT N2</div>
+                        <div class="collapsible-body"><span>{{df_2|safe}}</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_one</i>JLPT N1</div>
+                        <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
+                    </li>
+
+                <form action="/return" method = "POST">
+                    <button class="btn-large right waves-effect waves-light blue darken-1" type="submit" name="return">
+                        <i class="material-icons right">home</i>
+                        Home
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col s2">
+                <h2 class="header blue-text text-darken-1">Speed of speach :</h2>
+                <h1 class="text-darken-1">
+                    {{speed_of_speach}}
+                    <img id="speed_img" class="responsive-img circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speach}})">
+                </h1>
+        </div>
     </div>
-
-    <div class="container">
-        <h1 class="header blue-text text-darken-1">Vocabulary by NLPT levels:</h1>
-            <ul class="collapsible">
-                <li class="active">
-                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_5</i>JLPT N5</div>
-                    <div class="collapsible-body"><span>{{df_5|safe}}</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_4</i>JLPT N4</div>
-                    <div class="collapsible-body"><span>{{df_4|safe}}</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_3</i>JLPT N3</div>
-                    <div class="collapsible-body"><span>{{df_3|safe}}</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_two</i>JLPT N2</div>
-                    <div class="collapsible-body"><span>{{df_2|safe}}</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_one</i>JLPT N1</div>
-                    <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
-                </li>
-            </ul>
-    </div>
-
-    <div class="container">
-    <form action="/return" method = "POST">
-    <button class="btn-large right waves-effect waves-light blue darken-1" type="submit" name="return">
-        <i class="material-icons right">home</i>
-        Home
-    </button>
-    </form>
-    </div>
-
-    </body>
+</body>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../static/materialize.js"></script>
     <script type="text/javascript" src="../static/init.js"></script>
     <script type="text/javascript" src="../static/pie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 
 <style>
         .scroll-box {
