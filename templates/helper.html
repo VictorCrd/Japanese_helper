@@ -21,9 +21,9 @@
         <link href="../static/footer.css" rel="stylesheet">
         <link href="../static/main.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript" src="/static/img_speed_speach.js"></script>
         <script type="text/javascript">
             var CORE_N5 = {{CORE_N5}}
@@ -33,12 +33,26 @@
             var CORE_N1 = {{CORE_N1}}
             console.log("Hello world!");
         </script>
-        <script type="text/javascript" src="/static/pie.js"></script>
 
 
+        <script type="text/javascript">
+            $(function() {
+                $('a#add').on('click', function(e) {
+                    e.preventDefault()
+                    //var name = element.getAttribute("name")
+                    $.getJSON('/background_process_test', {
+                        name: this.name,
+                    },
+                        function() {
+                    });
+                    return "nothing";
+                });
+            });
+        </script>
     </head>
 
 <body>
+
 
     <div class="row">
         <div class="col s2">
@@ -48,18 +62,16 @@
         </div>
         <div class="col s8">
             <div class="container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-                <h1 class="header blue-text text-darken-1">Text :</h1>
-                    <div class="card-panel white scroll-box">
-                        <span class="text-darken-1">
-                            {{text}}
-                        </span>
-                    </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div></div>
 
                 <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
                 <p>{{top_10_words|safe}}</p>
+
+                <p id="demo" onload="function_f({{top_10_words_array}})"></p>
 
                 <h1 class="header blue-text text-darken-1">Difficulty :</h1>
                 <ul class="collection">
@@ -72,6 +84,13 @@
 
                 <canvas id="myChart" width="400" height="200">
                 </canvas>
+
+                <h1 class="header blue-text text-darken-1">Text :</h1>
+                <div class="card-panel white scroll-box">
+                    <span class="text-darken-1">
+                        {{text}}
+                    </span>
+                </div>
 
                 <h1 class="header blue-text text-darken-1">Vocabulary by NLPT levels:</h1>
                 <ul class="collapsible">
@@ -95,31 +114,26 @@
                         <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_one</i>JLPT N1</div>
                         <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
                     </li>
-
-                <form action="/return" method = "POST">
-                    <button class="btn-large right waves-effect waves-light blue darken-1" type="submit" name="return">
-                        <i class="material-icons right">home</i>
-                        Home
-                    </button>
-                </form>
-            </div>
+                </ul>
         </div>
-
         <div class="col s2">
-                <h2 class="header blue-text text-darken-1">Speed of speach :</h2>
-                <h1 class="text-darken-1">
+                <h2 class="header blue-text text-darken-1 center-align">Speed of speach :</h2>
+                <h1 class="text-darken-1 center-align">
                     {{speed_of_speach}}
-                    <img id="speed_img" class="responsive-img circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speach}})">
+                    <img id="speed_img" class="responsive-img circle center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speach}})">
                 </h1>
         </div>
     </div>
 </body>
+
+
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../static/materialize.js"></script>
     <script type="text/javascript" src="../static/init.js"></script>
     <script type="text/javascript" src="../static/pie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/static/pie.js"></script>
 
 
 <style>

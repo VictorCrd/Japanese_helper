@@ -9,12 +9,14 @@ import numpy as np
 import MeCab
 from jisho import Client
 
+global top_10
+top_10 = pd.DataFrame()
+
 wakati = MeCab.Tagger("-Owakati")
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た', 'ん', 'ね', 'よ', 'だ']
 known_vocab_drop = ['私', 'さん']
 list_drop_vocab = list_drop + known_vocab_drop
-
 
 def split_japanese(sentence):
     script = wakati.parse(sentence).split()
@@ -53,3 +55,9 @@ def get_traduction_10_jp_words(sentence):
         df_script['reading'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['japanese'][0]['reading']
     
     return df_script.to_html()
+
+
+def get_top_10_words(df1, df2, df3, df4, df5):
+    top_10 = pd.concat([df5, df4, df3, df2, df1], ignore_index=True).sort_values('Count', ascending=False).reset_index(drop=True)[0:10]
+
+    return top_10
