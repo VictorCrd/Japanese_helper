@@ -71,8 +71,6 @@
                 <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
                 <p>{{top_10_words|safe}}</p>
 
-                <p id="demo" onload="function_f({{top_10_words_array}})"></p>
-
                 <h1 class="header blue-text text-darken-1">Difficulty :</h1>
                 <ul class="collection">
                     <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
@@ -122,6 +120,10 @@
                     {{speed_of_speach}}
                     <img id="speed_img" class="responsive-img circle center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speach}})">
                 </h1>
+        </div>
+        <div class="container">
+            <h1 class="header blue-text text-darken-1">10 known words :</h1>
+            <p>{{known_words|safe}}</p>
         </div>
     </div>
 </body>
