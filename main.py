@@ -15,12 +15,12 @@ def helper():
     global top_10
     if request.method == "POST":
         if "nm" in request.form:
-            text_raw = request.form["nm"]
-            CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = jlpt_lvl_core(text_raw, 1)
+            text = request.form["nm"]
+            CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = jlpt_lvl_core(text, 1)
 
             column_list = ['Vocab', 'Count', 'Meaning', 'Reading']
 
-            text_jlpt = split_japanese(text_raw)
+            text_jlpt = split_japanese(text)
             df_5 = get_JLPT_words(text_jlpt, 5)[column_list]
             df_4 = get_JLPT_words(text_jlpt, 4)[column_list]
             df_3 = get_JLPT_words(text_jlpt, 3)[column_list]
@@ -33,7 +33,7 @@ def helper():
                 _top_10['button'][i] = '<form name="%d" action="/oui" > <input id="known%d" type="submit" name="known" value="known"> </form>' %(i, i)
 
             return render_template("helper.html", top_10_words=top_10.to_html(escape=False),
-                                   text=text_raw, CORE_N5=CORE_N5, CORE_N4=CORE_N4,
+                                   text=text, CORE_N5=CORE_N5, CORE_N4=CORE_N4,
                                CORE_N3=CORE_N3, CORE_N2=CORE_N2, CORE_N1=CORE_N1, mimetype='text/html', df_5=df_5.to_html(),
                                    df_4=df_4.to_html(), df_3=df_3.to_html(), df_2=df_2.to_html(), df_1=df_1.to_html())
 
