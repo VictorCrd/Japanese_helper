@@ -24,7 +24,9 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/img_speed_speach.js"></script>
+        <script type="text/javascript" src="/static/img_speed_speech.js"></script>
+
+
         <script type="text/javascript">
             var CORE_N5 = {{CORE_N5}}
             var CORE_N4 = {{CORE_N4}}
@@ -52,7 +54,18 @@
     </head>
 
 <body>
-
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue darken-2">
+                <a href="" class="brand-logo"><i class="fas fa-home fa-1x"></i></a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="">Youtube Helper</a></li>
+                    <li><a href="">Text Helper</a></li>
+                    <li><a href="">Podcast Helper</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
     <div class="row">
         <div class="col s2">
@@ -62,24 +75,18 @@
         </div>
         <div class="col s8">
             <div class="container">
+                {%  if  video_id != 0 %}
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
-                </div></div>
+                </div>
+                {% endif %}
 
                 <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
                 <p>{{top_10_words|safe}}</p>
 
                 <h1 class="header blue-text text-darken-1">Difficulty :</h1>
-                <ul class="collection">
-                    <li class="collection-item">JLPT N5 : {{CORE_N5}}</li>
-                    <li class="collection-item">JLPT N4 : {{CORE_N4}}</li>
-                    <li class="collection-item">JLPT N3 : {{CORE_N3}}</li>
-                    <li class="collection-item">JLPT N2 : {{CORE_N2}}</li>
-                    <li class="collection-item">JLPT N1 : {{CORE_N1}}</li>
-                </ul>
-
                 <canvas id="myChart" width="400" height="200">
                 </canvas>
 
@@ -113,18 +120,30 @@
                         <div class="collapsible-body"><span>{{df_1|safe}}</span></div>
                     </li>
                 </ul>
+            </div>
         </div>
+
+        {%  if  speed_of_speech != 0 %}
         <div class="col s2">
-                <h2 class="header blue-text text-darken-1 center-align">Speed of speach :</h2>
+                <h2 class="header blue-text text-darken-1 center-align">Speed of speech :</h2>
                 <h1 class="text-darken-1 center-align">
-                    {{speed_of_speach}}
-                    <img id="speed_img" class="responsive-img circle center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speach}})">
+                    {{speed_of_speech}}
+                    <img id="speed_img" class="responsive-img circle center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speech}})">
                 </h1>
         </div>
+        {% endif %}
+
+        {%  if  speed_of_speech != 0 %}
         <div class="container">
             <h1 class="header blue-text text-darken-1">10 known words :</h1>
             <p>{{known_words|safe}}</p>
         </div>
+        {%  else %}
+        <div class="container">
+            <h1 class="header blue-text text-darken-1">10 known words :</h1>
+            <p>There is no known word in within this content</p>
+        </div>
+        {% endif %}
     </div>
 </body>
 

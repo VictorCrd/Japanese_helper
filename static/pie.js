@@ -9,7 +9,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['N5', 'N4', 'N3', 'N2', 'N1'],
         datasets: [{
-            label: '% of words by category',
+            label: '% of words by JLPT level',
             data: [CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

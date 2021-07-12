@@ -14,10 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,27 +31,30 @@
 
 
     <body>
-        <nav class="site-header sticky-top py-1">
-            <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <a href="https://www.linkedin.com/in/victor-cardon/" class="white-text valign-wrapper">
-                <i class="fab fa-linkedin fa-3x"></i>
-                </a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Youtube Helper</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Text Helper</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Podcast Helper</a>
-            </div>
-        </nav>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper blue darken-2">
+                    <a href="https://www.linkedin.com/in/victor-cardon/" class="brand-logo">
+                    <i class="fab fa-linkedin fa-1x"></i>
+                    </a>
+                    <ul id="nav-mobile" class="right">
+                        <li><a href="#text">Youtube Helper</a></li>
+                        <li><a href="#text">Text Helper</a></li>
+                        <li><a href="">Podcast Helper</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
     <div class="container">
         <div id="index-banner" class="Learning Helper">
                     <br><br>
-                    <h1 class="header center blue-text text-darken-1">Learning Helper</h1>
+                    <h1 class="header center blue-text text-darken-1">Japanese Learning Helper</h1>
                     <div class="row center">
-                        <h5 class="header col s12 light">An application under development to help you learn a language</h5>
+                        <h5 class="header col s12 light">An application being developed to assist you in learning Japanese</h5>
                     </div>
                     <div class="center-align">
-                        <a href="#" id="" class="btn-large waves-effect waves-light blue darken-1 ">Get Started</a>
+                        <a href="#text" id="" class="btn-large waves-effect waves-light blue darken-1 ">Get Started</a>
                     </div>
                     <br><br>
         </div>
@@ -66,7 +66,7 @@
         </div>
 
     <div class="container">
-        <div class="row center">
+        <div class="row center" id="text" class="section scrollspy">
             <form action="#" method="post" class="col s12">
                 <h2 class="header left blue-text text-darken-1">Text:</h2>
                 <p><input type="text" name="nm"/></p>
@@ -88,7 +88,6 @@
 
         <h1>To do list</h1>
         <ul class="collection">
-            <li class="collection-item">display known words</li>
             <li class="collection-item">topic of a video (ML)</li>
             <li class="collection-item">create subtitles using ML for videos/audio without subtitles</li>
             <li class="collection-item">page layout</li>
