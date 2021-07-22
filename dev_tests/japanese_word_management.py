@@ -30,8 +30,6 @@ def split_japanese(sentence):
 This function alow to request Jisho to get a traduction
 Not used, too long to process and actual list of words have a traduction 
 """
-
-
 def get_traduction_10_jp_words(sentence):
     script = wakati.parse(sentence).split()
     df_script = pd.DataFrame({'vocab': script})

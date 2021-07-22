@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from dev_tests.JLPT_LVL_script import get_top_10_words, jlpt_lvl_core, get_JLPT_words, get_top_10_known_words
+from dev_tests.JLPT_LVL_script import get_top_10_words, jlpt_lvl_core, get_jlpt_words, get_top_10_known_words, get_lemma
 from dev_tests.youtube_subs import get_yt_sub
 from dev_tests.speed_of_speach import get_speed_of_speach
 from dev_tests.manage_known_words import add_known_word
@@ -12,31 +12,35 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
 def helper():
-    global top_10
+    global top_10, text
+    cnt_sum = 1  # 0= sum() & 1 = count()
     if request.method == "POST":
         speed_of_speech = 0
         video_id = 0
 
         if "nm" in request.form:
             text = request.form["nm"]
-            CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = jlpt_lvl_core(text, 1)
 
         if "youtube" in request.form:
             video_id = request.form["youtube"]
-            video_id = video_id.split("https://www.youtube.com/watch?v=", 1)[1]
+            video_id = video_id[video_id.find("https://www.youtube.com/watch?v=")+len("https://www.youtube.com/watch?v="):video_id.find("&")]
+            #video_id = video_id.split("https://www.youtube.com/watch?v=", 1)[1]
             youtube_subs = get_yt_sub(video_id)
             speed_of_speech = get_speed_of_speach(youtube_subs)
             text = youtube_subs['phrases'].to_string(header=False, index=False).replace('\n', '').replace(' ', '')
-            CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = jlpt_lvl_core(text, 1)
+
+        CORE_N5, CORE_N4, CORE_N3, CORE_N2, CORE_N1 = jlpt_lvl_core(text, cnt_sum)
 
         column_list = ['Vocab', 'Count', 'Meaning', 'Reading']
 
         text_jlpt = split_japanese(text)
-        df_5 = get_JLPT_words(text_jlpt, 5)[column_list]
-        df_4 = get_JLPT_words(text_jlpt, 4)[column_list]
-        df_3 = get_JLPT_words(text_jlpt, 3)[column_list]
-        df_2 = get_JLPT_words(text_jlpt, 2)[column_list]
-        df_1 = get_JLPT_words(text_jlpt, 1)[column_list]
+        df_5 = get_jlpt_words(text_jlpt, 5)[column_list]
+        df_4 = get_jlpt_words(text_jlpt, 4)[column_list]
+        df_3 = get_jlpt_words(text_jlpt, 3)[column_list]
+        df_2 = get_jlpt_words(text_jlpt, 2)[column_list]
+        df_1 = get_jlpt_words(text_jlpt, 1)[column_list]
+
+        lemma = get_lemma(text_jlpt)[0:10]
 
         top_10 = get_top_10_words(df_5, df_4, df_3, df_2, df_1)
         top_10['Known word'] = np.NaN
@@ -47,15 +51,17 @@ def helper():
                                                 'it">Add</button></a>' % i
 
         df_top_10_known_words = get_top_10_known_words(df_5, df_4, df_3, df_2, df_1)
+        print(df_top_10_known_words)
         if df_top_10_known_words.empty:
             print('DataFrame is empty!')
-            df_top_10_known_words = 0
+            df_top_10_known_words = int(0)
             print(df_top_10_known_words)
         else:
             df_top_10_known_words = df_top_10_known_words.to_html(escape=False)
 
-
-        return render_template("helper.html", top_10_words=top_10.to_html(escape=False),
+        return render_template("helper.html",
+                               top_10_words=top_10.to_html(escape=False),
+                               top_10_lemma=lemma.to_html(escape=False),
                                text=text, CORE_N5=CORE_N5, CORE_N4=CORE_N4, CORE_N3=CORE_N3, CORE_N2=CORE_N2,
                                CORE_N1=CORE_N1, mimetype='text/html', df_5=df_5.to_html(),
                                df_4=df_4.to_html(), df_3=df_3.to_html(), df_2=df_2.to_html(), df_1=df_1.to_html(),

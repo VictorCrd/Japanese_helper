@@ -86,6 +86,9 @@
                 <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
                 <p>{{top_10_words|safe}}</p>
 
+                <h1 class="header blue-text text-darken-1">10 most frequent lemmas :</h1>
+                <p>{{top_10_lemma|safe}}</p>
+
                 <h1 class="header blue-text text-darken-1">Difficulty :</h1>
                 <canvas id="myChart" width="400" height="200">
                 </canvas>
@@ -97,7 +100,7 @@
                     </span>
                 </div>
 
-                <h1 class="header blue-text text-darken-1">Vocabulary by NLPT levels:</h1>
+                <h1 class="header blue-text text-darken-1">Vocabulary by JLPT levels:</h1>
                 <ul class="collapsible">
                     <li class="active">
                         <div class="collapsible-header blue-text text-darken-1"><i class="material-icons">looks_5</i>JLPT N5</div>
@@ -133,7 +136,7 @@
         </div>
         {% endif %}
 
-        {%  if  speed_of_speech != 0 %}
+        {%  if  known_words != 0 %}
         <div class="container">
             <h1 class="header blue-text text-darken-1">10 known words :</h1>
             <p>{{known_words|safe}}</p>
@@ -141,7 +144,7 @@
         {%  else %}
         <div class="container">
             <h1 class="header blue-text text-darken-1">10 known words :</h1>
-            <p>There is no known word in within this content</p>
+            <p>There is no known word within this content</p>
         </div>
         {% endif %}
     </div>
