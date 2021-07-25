@@ -4,7 +4,7 @@
 # Imports
 
 import pandas as pd
-from scripts.japanese_word_management import split_japanese
+from japanese_word_management import split_japanese
 
 """
 Import csv
