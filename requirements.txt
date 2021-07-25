@@ -74,7 +74,7 @@ llvmlite==0.31.0
 Markdown==3.2.2
 MarkupSafe==1.1.1
 matplotlib==3.3.1
-mecab==0.996.2
+mecab-python3==1.0.3
 mido==1.2.6
 mistune==0.8.4
 mpmath==1.2.1
