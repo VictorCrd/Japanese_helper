@@ -147,7 +147,6 @@ pyjisho==0.1.0
 pyknp==0.4.6
 pypandoc==1.5
 pyparsing==2.4.7
-pypiwin32==223
 pypng==0.0.20
 pyrsistent==0.16.0
 PyYAML==5.3.1
