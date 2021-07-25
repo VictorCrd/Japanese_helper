@@ -3,7 +3,7 @@ from dev_tests.JLPT_LVL_script import get_top_10_words, jlpt_lvl_core, get_jlpt_
 from dev_tests.youtube_subs import get_yt_sub
 from dev_tests.speed_of_speach import get_speed_of_speach
 from dev_tests.manage_known_words import add_known_word
-#from dev_tests.japanese_word_management import split_japanese
+from dev_tests.japanese_word_management import split_japanese
 
 import numpy as np
 

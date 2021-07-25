@@ -3,7 +3,7 @@ import MeCab
 from jisho import Client
 import pandas as pd
 
-wakati = MeCab.Tagger("-Owakati")
+wakati = MeCab.Tagger()
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
              'ん', 'ね', 'よ', 'だ']
