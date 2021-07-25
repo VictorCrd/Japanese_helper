@@ -3,6 +3,7 @@ import MeCab
 from jisho import Client
 import pandas as pd
 
+tagger = MeCab.Tagger('-r/dev/null -d/home/hoge/mydic')
 wakati = MeCab.Tagger("-Owakati")
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
