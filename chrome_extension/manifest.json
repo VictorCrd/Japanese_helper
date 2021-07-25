@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "Japanese_helper",
+  "description": "Help you learning japanese with youtube video",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_icon": "inu.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": []
+}
