@@ -7,10 +7,10 @@ from dev_tests.japanese_word_management import split_japanese
 
 import numpy as np
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route("/", methods=["POST", "GET"])
+@application.route("/", methods=["POST", "GET"])
 def helper():
     global top_10, text
     cnt_sum = 1  # 0= sum() & 1 = count()
@@ -72,13 +72,13 @@ def helper():
         return render_template("index.html")
 
 
-@app.route('/return', methods=['POST', 'GET'])
+@application.route('/return', methods=['POST', 'GET'])
 def verify():
     if request.method == 'POST':
         return redirect("/")
 
 
-@app.route('/background_process_test')
+@application.route('/background_process_test')
 def background_process_test():
     print(top_10)
     # name = request.form['name']
@@ -90,4 +90,4 @@ def background_process_test():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
