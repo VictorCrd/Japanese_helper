@@ -5,7 +5,8 @@ import pandas as pd
 
 try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
-    wakati = MeCab.Tagger('/unidic/unidic - lite - 1.0.8/unidic_lite/dicdir')
+    wakati = MeCab.Tagger('/unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')
+    print("ça fonctionne")
 except:
     wakati = MeCab.Tagger('-r/dev/null -d /app/.huroku/etc/mecabrc')
 
