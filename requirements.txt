@@ -10,3 +10,4 @@ regex==2020.11.13
 youtube-transcript-api==0.4.1
 pyjisho==0.1.0
 unidic-lite==1.0.8
+Janome==0.4.1
