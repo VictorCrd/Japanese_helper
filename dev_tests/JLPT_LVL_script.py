@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# Imports
-
 import pandas as pd
 from dev_tests.japanese_word_management import split_japanese
 

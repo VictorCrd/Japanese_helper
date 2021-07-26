@@ -1,8 +1,6 @@
 import numpy as np
-import MeCab
 from jisho import Client
 import pandas as pd
-import fugashi
 from janome.tokenizer import Tokenizer
 
 """try:
