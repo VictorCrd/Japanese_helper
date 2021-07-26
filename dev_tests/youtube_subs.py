@@ -3,13 +3,11 @@
 
 from youtube_transcript_api import YouTubeTranscriptApi
 import pandas as pd
-import MeCab
 
 """
 Get subtitles (youtube)
 https://pypi.org/project/youtube-transcript-api/#description
 """
-wakati = MeCab.Tagger("-Owakati")
 
 
 def get_yt_sub(youtube_id):
