@@ -8,7 +8,7 @@ try:
     wakati = MeCab.Tagger('/unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')
     print("ça fonctionne")
 except:
-    wakati = MeCab.Tagger('-r/dev/null -d /app/.huroku/etc/mecabrc')
+    wakati = MeCab.Tagger('-r/dev/null -d /unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
              'ん', 'ね', 'よ', 'だ']
