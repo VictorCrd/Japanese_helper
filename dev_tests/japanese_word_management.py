@@ -1,7 +1,7 @@
 import numpy as np
 from jisho import Client
 import pandas as pd
-from fugashi import Tagger
+import fugashi
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
@@ -13,11 +13,11 @@ except:
 list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「',
                    'た', 'ん', 'ね', 'よ', 'だ']
 
-wakati = Tagger('-Owakati')
+wakati = fugashi.Tagger()
 
 def split_japanese(sentence):
-    script = wakati.parse(sentence).split()
-    #script = [x.surface for x in wakati.tokenize(sentence)]
+    #script = wakati.parse(sentence).split()
+    script = [x.surface for x in wakati(sentence)]
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
     df_script = df_script.groupby('vocab').sum().sort_values('count', ascending=False)

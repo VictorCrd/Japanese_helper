@@ -1,7 +1,3 @@
-import os
-os.environ['MECAB_PATH']='/usr/local/lib/libmecab.so'
-os.environ['MECAB_CHARSET']='utf-16'
-
 from flask import Flask, render_template, request, redirect
 from dev_tests.JLPT_LVL_script import get_top_10_words, jlpt_lvl_core, get_jlpt_words, get_top_10_known_words, get_lemma
 from dev_tests.youtube_subs import get_yt_sub
