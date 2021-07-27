@@ -1,7 +1,7 @@
 import numpy as np
 from jisho import Client
 import pandas as pd
-import fugashi
+from janome.tokenizer import Tokenizer
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
@@ -10,14 +10,17 @@ import fugashi
 except:
     wakati = MeCab.Tagger('-r/dev/null -d /unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')"""
 
-list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「',
-                   'た', 'ん', 'ね', 'よ', 'だ']
+wakati = Tokenizer(udic_type="simpledic", udic_enc="utf8")
 
-wakati = fugashi.Tagger()
+list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
+             'ん', 'ね', 'よ', 'だ']
+
+list_drop_vocab = list_drop
+
 
 def split_japanese(sentence):
     #script = wakati.parse(sentence).split()
-    script = [x.surface for x in wakati(sentence)]
+    script = [x.surface for x in wakati.tokenize(sentence)]
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
     df_script = df_script.groupby('vocab').sum().sort_values('count', ascending=False)
@@ -36,7 +39,6 @@ This function alow to request Jisho to get a traduction
 Not used, too long to process and actual list of words have a traduction 
 """
 def get_traduction_10_jp_words(sentence):
-    from janome.tokenizer import Tokenizer
     script = wakati.parse(sentence).split()
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
