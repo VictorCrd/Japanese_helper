@@ -1,5 +1,5 @@
 import pandas as pd
-#from dev_tests.japanese_word_management import split_japanese
+from dev_tests.japanese_word_management import split_japanese
 
 """
 Import csv
