@@ -10,12 +10,12 @@ from janome.tokenizer import Tokenizer
 except:
     wakati = MeCab.Tagger('-r/dev/null -d /unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')"""
 
+#Important: udic_type="simpledic" is needed when the application is deployed on a small server
+#instantiat a Tokenizer need a lot of memory, udic_type="simpledic" help to reduce memory needed
 wakati = Tokenizer(udic_type="simpledic", udic_enc="utf8")
 
-list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
+list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
              'ん', 'ね', 'よ', 'だ']
-
-list_drop_vocab = list_drop
 
 
 def split_japanese(sentence):
