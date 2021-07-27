@@ -10,10 +10,17 @@ import numpy as np
 app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
+def index():
+    print("else")
+    return render_template("index.html")
+
+
+@app.route("/helper", methods=["POST", "GET"])
 def helper():
     global top_10, text
     cnt_sum = 1  # 0= sum() & 1 = count()
     if request.method == "POST":
+        print("post")
         speed_of_speech = 0
         video_id = 0
 
@@ -66,9 +73,6 @@ def helper():
                                df_4=df_4.to_html(), df_3=df_3.to_html(), df_2=df_2.to_html(), df_1=df_1.to_html(),
                                speed_of_speech=speed_of_speech,
                                video_id=video_id, known_words=df_top_10_known_words)
-
-    else:
-        return render_template("index.html")
 
 
 @app.route('/return', methods=['POST', 'GET'])
