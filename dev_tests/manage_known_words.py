@@ -1,6 +1,6 @@
 import pandas as pd
 
-#df_known_words = pd.read_csv("known_words/known_words.csv")
+df_known_words = pd.read_csv("known_words/known_words.csv")
 
 
 def add_known_word(df, i):

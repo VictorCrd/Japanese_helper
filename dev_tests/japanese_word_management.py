@@ -1,7 +1,7 @@
 import numpy as np
 from jisho import Client
 import pandas as pd
-from janome.tokenizer import Tokenizer
+#from janome.tokenizer import Tokenizer
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
@@ -10,7 +10,8 @@ from janome.tokenizer import Tokenizer
 except:
     wakati = MeCab.Tagger('-r/dev/null -d /unidic/unidic - lite - 1.0.8/unidic_lite/dicdir/mydic')"""
 
-wakati = Tokenizer()
+#wakati = Tokenizer()
+wakati = 0
 
 list_drop = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
              'ん', 'ね', 'よ', 'だ']

@@ -5,21 +5,21 @@ from dev_tests.japanese_word_management import split_japanese
 Import csv
 """
 
-#df_core_Japanese_Vocabulary_N5 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N5.csv",
-#                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
-#df_core_Japanese_Vocabulary_N4 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N4.csv",
-#                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
-#df_core_Japanese_Vocabulary_N3 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N3.csv",
-#                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
-#df_core_Japanese_Vocabulary_N2 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N2.csv",
-#                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
-#df_core_Japanese_Vocabulary_N1 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N1.csv",
-#                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
+df_core_Japanese_Vocabulary_N5 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N5.csv",
+                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
+df_core_Japanese_Vocabulary_N4 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N4.csv",
+                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
+df_core_Japanese_Vocabulary_N3 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N3.csv",
+                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
+df_core_Japanese_Vocabulary_N2 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N2.csv",
+                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
+df_core_Japanese_Vocabulary_N1 = pd.read_csv("JLPT_Voca_csv/Core_Japanese_Vocabulary_N1.csv",
+                                             usecols=['Expression', 'Meaning', 'Reading', 'Additional_meaning'])
 
-#df_core_Japanese_Vocabulary = df_core_Japanese_Vocabulary_N5.append(df_core_Japanese_Vocabulary_N4)\
-#    .append(df_core_Japanese_Vocabulary_N3).append(df_core_Japanese_Vocabulary_N2).append(df_core_Japanese_Vocabulary_N1)
+df_core_Japanese_Vocabulary = df_core_Japanese_Vocabulary_N5.append(df_core_Japanese_Vocabulary_N4)\
+    .append(df_core_Japanese_Vocabulary_N3).append(df_core_Japanese_Vocabulary_N2).append(df_core_Japanese_Vocabulary_N1)
 
-#df_lemmas = pd.read_csv("JLPT_Voca_csv/japanese_lemmas.csv")
+df_lemmas = pd.read_csv("JLPT_Voca_csv/japanese_lemmas.csv")
 
 
 def get_jlpt_words(df_sentence, JLPT_LVL):
