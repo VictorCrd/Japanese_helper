@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect
 from dev_tests.youtube_subs import get_yt_sub
 from dev_tests.speed_of_speach import get_speed_of_speach
 #from dev_tests.manage_known_words import add_known_word
-from dev_tests.japanese_word_management import split_japanese
+#from dev_tests.japanese_word_management import split_japanese
 
 import numpy as np
 
