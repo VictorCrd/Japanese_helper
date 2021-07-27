@@ -86,7 +86,7 @@
                 <h1 class="header blue-text text-darken-1">10 most frequent words :</h1>
                 <p>{{top_10_words|safe}}</p>
 
-                <h1 class="header blue-text text-darken-1">10 most frequent lemmas :</h1>
+                <h1 class="header blue-text text-darken-1">10 most common words :</h1>
                 <p>{{top_10_lemma|safe}}</p>
 
                 <h1 class="header blue-text text-darken-1">Difficulty :</h1>
@@ -128,10 +128,10 @@
 
         {%  if  speed_of_speech != 0 %}
         <div class="col s2">
-                <h2 class="header blue-text text-darken-1 center-align">Speed of speech :</h2>
+                <h4 class="header blue-text text-darken-1 center-align">Speed of speech :</h4>
                 <h1 class="text-darken-1 center-align">
-                    {{speed_of_speech}}
-                    <img id="speed_img" class="responsive-img circle center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speech}})">
+                    <!--{{speed_of_speech}}-->
+                    <img id="speed_img" class="responsive-img center-align" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="set_img_src({{speed_of_speech}})">
                 </h1>
         </div>
         {% endif %}
