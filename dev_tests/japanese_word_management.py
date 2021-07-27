@@ -1,6 +1,7 @@
 import numpy as np
 from jisho import Client
 import pandas as pd
+from fugashi import Tagger
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
@@ -12,12 +13,11 @@ except:
 list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「',
                    'た', 'ん', 'ね', 'よ', 'だ']
 
+wakati = Tagger('-Owakati')
 
 def split_japanese(sentence):
-    from janome.tokenizer import Tokenizer
-    wakati = Tokenizer()
-    #script = wakati.parse(sentence).split()
-    script = [x.surface for x in wakati.tokenize(sentence)]
+    script = wakati.parse(sentence).split()
+    #script = [x.surface for x in wakati.tokenize(sentence)]
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
     df_script = df_script.groupby('vocab').sum().sort_values('count', ascending=False)
@@ -27,7 +27,6 @@ def split_japanese(sentence):
 
     # df_script = df_script.groupby('vocab').sum().sort_values('count', ascending = False).drop(index = list_drop)[0:10]
     df_script = df_script.reset_index()
-    del wakati
 
     return df_script
 
@@ -38,7 +37,6 @@ Not used, too long to process and actual list of words have a traduction
 """
 def get_traduction_10_jp_words(sentence):
     from janome.tokenizer import Tokenizer
-    wakati = Tokenizer()
     script = wakati.parse(sentence).split()
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
@@ -57,7 +55,5 @@ def get_traduction_10_jp_words(sentence):
         df_script['trad'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['senses'][0][
             'english_definitions']
         df_script['reading'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['japanese'][0]['reading']
-
-    del wakati
 
     return df_script.to_html()

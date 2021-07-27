@@ -6,4 +6,4 @@ numpy==1.19.3
 pandas==1.0.5
 youtube-transcript-api==0.4.1
 pyjisho==0.1.0
-Janome==0.4.1
+fugashi==1.1.1
