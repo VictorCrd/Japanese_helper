@@ -1,7 +1,6 @@
 import numpy as np
 from jisho import Client
 import pandas as pd
-#from janome.tokenizer import Tokenizer
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
@@ -15,6 +14,7 @@ list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', '�
 
 
 def split_japanese(sentence):
+    from janome.tokenizer import Tokenizer
     wakati = Tokenizer()
     #script = wakati.parse(sentence).split()
     script = [x.surface for x in wakati.tokenize(sentence)]
@@ -37,6 +37,7 @@ This function alow to request Jisho to get a traduction
 Not used, too long to process and actual list of words have a traduction 
 """
 def get_traduction_10_jp_words(sentence):
+    from janome.tokenizer import Tokenizer
     wakati = Tokenizer()
     script = wakati.parse(sentence).split()
     df_script = pd.DataFrame({'vocab': script})
