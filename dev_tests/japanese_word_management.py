@@ -1,7 +1,7 @@
 import numpy as np
-#from jisho import Client
+from jisho import Client
 import pandas as pd
-from janome.tokenizer import Tokenizer
+#from janome.tokenizer import Tokenizer
 
 """try:
     # wakati = MeCab.Tagger('-d "{}"'.format(unidic.DICDIR))
