@@ -9,7 +9,6 @@ import numpy as np
 
 application = Flask(__name__)
 
-
 @application.route("/", methods=["POST", "GET"])
 def helper():
     global top_10, text
@@ -90,4 +89,4 @@ def background_process_test():
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run()

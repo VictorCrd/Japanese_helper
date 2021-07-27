@@ -20,7 +20,6 @@ list_drop_vocab = list_drop
 
 def split_japanese(sentence):
     #script = wakati.parse(sentence).split()
-    script = wakati.tokenize(sentence)
     script = [x.surface for x in wakati.tokenize(sentence)]
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
