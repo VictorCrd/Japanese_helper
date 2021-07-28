@@ -12,7 +12,7 @@ except:
 
 #Important: udic_type="simpledic" is needed when the application is deployed on a small server
 #instantiat a Tokenizer need a lot of memory, udic_type="simpledic" help to reduce memory needed
-wakati = Tokenizer(udic_type="simpledic", udic_enc="utf8", mmap=False)
+wakati = Tokenizer(udic_type="simpledic", udic_enc="utf8", wakati=True)
 
 list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', 'が', 'です', 'で', 'も', 'か', 'を', 'し', 'な', 'へ', 'み', '」', '「', 'た',
              'ん', 'ね', 'よ', 'だ']
@@ -20,7 +20,7 @@ list_drop_vocab = ['、', '。', 'の', 'て', 'に', 'と', 'は', 'ます', '�
 
 def split_japanese(sentence):
     #script = wakati.parse(sentence).split()
-    script = [x.surface for x in wakati.tokenize(sentence)]
+    script = wakati.tokenize(sentence)
     df_script = pd.DataFrame({'vocab': script})
     df_script['count'] = 1
     df_script = df_script.groupby('vocab').sum().sort_values('count', ascending=False)
