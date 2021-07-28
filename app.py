@@ -25,8 +25,10 @@ def helper():
 
         if "youtube" in request.form:
             video_id = request.form["youtube"]
-            video_id = video_id[video_id.find("https://www.youtube.com/watch?v=")+len("https://www.youtube.com/watch?v="):video_id.find("&")]
-            #video_id = video_id.split("https://www.youtube.com/watch?v=", 1)[1]
+            if "channel" in video_id:
+                video_id = video_id[video_id.find("https://www.youtube.com/watch?v=")+len("https://www.youtube.com/watch?v="):video_id.find("&")]
+            else:
+                video_id = video_id.split("https://www.youtube.com/watch?v=", 1)[1]
             youtube_subs = get_yt_sub(video_id)
             speed_of_speech = get_speed_of_speach(youtube_subs)
             text = youtube_subs['phrases'].to_string(header=False, index=False).replace('\n', '').replace(' ', '')
