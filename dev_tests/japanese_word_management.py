@@ -1,5 +1,5 @@
 import numpy as np
-#from jisho import Client
+from jisho import Client
 import pandas as pd
 from janome.tokenizer import Tokenizer
 
@@ -52,10 +52,10 @@ def get_traduction_10_jp_words(sentence):
 
     df_script['trad'] = np.NaN
     df_script['reading'] = np.NaN
-    #client = Client()
-    #for i in range(0, len(df_script)):
-    #    df_script['trad'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['senses'][0][
-    #        'english_definitions']
-    #    df_script['reading'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['japanese'][0]['reading']
+    client = Client()
+    for i in range(0, len(df_script)):
+        df_script['trad'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['senses'][0][
+            'english_definitions']
+        df_script['reading'].loc[i] = client.search(df_script['vocab'][i]).get("data")[0]['japanese'][0]['reading']
 
     return df_script.to_html()
